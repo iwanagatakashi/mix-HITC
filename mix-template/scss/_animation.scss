@@ -1,0 +1,905 @@
+@charset "UTF-8";
+//? ■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+//? アニメーション設定
+
+//? ■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+// *=========================================
+
+// *move (move-on move-〇〇が成立するとアニメーション)
+// *動かしたいにmoveとmove-〇〇を付与
+
+// *=========================================
+
+// *.move-top を指定した要素のアニメーション
+// ----------------------------------------------------------
+@keyframes movetop {
+  0% {
+    transform: translateY(-200px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.move-top {
+  opacity: 0;
+
+  &.move-on {
+    animation: movetop 1s ease-in-out 0.5s 1 normal both;
+  }
+}
+
+// *.move-bottom を指定した要素のアニメーション
+// ----------------------------------------------------------
+@keyframes movebottom {
+  0% {
+    transform: translateY(200px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.move-bottom {
+  opacity: 0;
+
+  &.move-on {
+    animation: movebottom 1s ease-in-out 0.5s 1 normal both;
+  }
+}
+
+// *.move-left を指定した要素のアニメーション
+// ----------------------------------------------------------
+@keyframes moveleft {
+  0% {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.move-left {
+  opacity: 0;
+
+  &.move-on {
+    animation: moveleft 1s ease-in-out 0.5s 1 normal both;
+  }
+}
+
+// *.move-right を指定した要素のアニメーション
+// ----------------------------------------------------------
+@keyframes moveright {
+  0% {
+    transform: translateX(200px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.move-right {
+  opacity: 0;
+
+  &.move-on {
+    animation: moveright 1s ease-in-out 0.5s 1 normal both;
+  }
+}
+
+// *=========================================
+// *.move-text 文字が1文字ずつ表示される
+// *=========================================
+
+.move-text {
+  opacity: 0;
+
+  & span {
+    opacity: 0;
+  }
+}
+
+.move-text2 {
+  opacity: 0;
+
+  & span {
+    opacity: 0;
+  }
+}
+
+// *=========================================
+// *.fade-in ふわっと文字が表示される
+// *=========================================
+
+.fade-in {
+  opacity: 0;
+  transition: 1s;
+
+  &.move-on {
+    opacity: 1;
+  }
+}
+
+// *.fade-bottom 下からふわっと
+// ----------------------------------------------------------
+.fade-bottom {
+  opacity: 0;
+  transform: translate(0, 50%);
+  transition: 1s;
+
+  &.move-on {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+// *.fade-left 左からふわっと
+// ----------------------------------------------------------
+.fade-left {
+  opacity: 0;
+  transform: translate(-50%, 0);
+  transition: 1s;
+
+  &.move-on {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+// *.fade-righht 右からふわっと
+// ----------------------------------------------------------
+.fade-right {
+  opacity: 0;
+  transform: translate(50%, 0);
+  transition: 1s;
+
+  &.move-on {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+// *=========================================
+// *.bounce バウンドさせる
+// *=========================================
+
+@keyframes bounce {
+
+  0%,
+  20%,
+  53%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translateZ(0);
+  }
+
+  40%,
+  43% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -30px, 0) scaleY(1.1);
+  }
+
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -15px, 0) scaleY(1.05);
+  }
+
+  80% {
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translateZ(0) scaleY(0.95);
+  }
+
+  90% {
+    transform: translate3d(0, -4px, 0) scaleY(1.02);
+  }
+}
+
+.move-bounce {
+  &.move-on {
+    animation: bounce 1s ease-in-out 0.5s 1 normal both;
+  }
+}
+
+// *=========================================
+// *.anime-h 上下にふわふわ動く
+// *=========================================
+
+@keyframes anime-h {
+  0% {
+    transform: translate(0, 0px);
+  }
+
+  100% {
+    transform: translate(0, -15px);
+  }
+}
+
+.anime-h {
+  animation: anime-h 1.5s ease-in-out 0s infinite alternate;
+  display: inline-block;
+}
+
+// *=========================================
+// *.anime-w 左右にふわふわ動く
+// *=========================================
+
+@keyframes anime-w {
+  0% {
+    transform: translate(0px, 0);
+  }
+
+  100% {
+    transform: translate(15px, 0);
+  }
+}
+
+.anime-w {
+  animation: anime-w 1.5s ease-in-out 0s infinite alternate;
+  display: inline-block;
+}
+
+// *=========================================
+// *.anime-swing 左右にゆらゆら動く
+// *=========================================
+
+@keyframes anime-swing {
+  50% {
+    transform: rotate(-30deg);
+  }
+
+  100% {
+    transform: rotate(30deg);
+  }
+}
+
+.anime-swing {
+  animation: anime-swing 5s ease-in-out 0s infinite alternate;
+  transform: rotate(30deg);
+  display: inline-block;
+}
+
+// *=========================================
+// *.anime-spin くるくる回る
+// *=========================================
+
+@keyframes anime-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.anime-spin {
+  animation: anime-spin 2s linear 0s infinite alternate;
+  animation-direction: normal;
+  display: inline-block;
+}
+
+// *=========================================
+// *.anime-zoom 拡大縮小
+// *=========================================
+
+@keyframes anime-zoom {
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+.anime-zoom {
+  animation: anime-zoom 1.5s ease-in-out 0s infinite alternate;
+  transform: scale(0.85, 0.85);
+  display: inline-block;
+}
+
+//?  ■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+//?  ホバー時のアクション設定
+
+//?  ■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+// *=========================================
+// *ふわっと浮かす設定(flyクラスを付けるとホバーするとふわっと浮く)
+// *=========================================
+.fly {
+  display: inline-block;
+  transition: all 0.3s;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    transition: all 0.3s;
+    transform: translate(0, -4px);
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.12);
+  }
+}
+
+// *=========================================
+// *明るくする設定(lightクラスを付けるとホバーすると明るくなる)
+// *=========================================
+.light {
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    filter: brightness(150%);
+  }
+}
+
+// *=========================================
+// *キラッと光る設定(shineクラスを付けるとホバーするとキラッと光る)
+// *=========================================
+.shine {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: -75%;
+    z-index: 2;
+    display: block;
+    content: '';
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 100%);
+    transform: skewX(-25deg);
+  }
+
+  &:hover::before {
+    animation: shine 0.75s;
+  }
+}
+
+@keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+
+// *=========================================
+// *ブラー効果設定(blurクラスを付けるとぼかし効果、ホバーすると解除)
+// *=========================================
+.blur {
+  filter: blur(2px);
+  transition: 0.5s ease-in-out;
+
+  &:hover {
+    filter: blur(0);
+  }
+}
+
+// *=========================================
+// *グレー効果設定(grayクラスを付けるとグレー化、ホバーすると解除)
+// *=========================================
+.gray {
+  filter: grayscale(100%);
+  transition: 0.5s ease-in-out;
+
+  &:hover {
+    filter: grayscale(0);
+  }
+}
+
+//?  ■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+//?  ホバー時のアクション設定(img限定)
+
+//?  ■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+// *=========================================
+// *ズームする設定(zoomクラスを付けるとホバーするとズームする)
+// *=========================================
+.zoom {
+  overflow: hidden;
+
+  & img {
+    transition: 0.4s;
+  }
+
+  & img:hover {
+    transform: scale(1.1, 1.1);
+  }
+}
+
+// *=========================================
+// *色を変える設定(colorクラスを付けるとホバーすると色が変わる)
+// *=========================================
+.color {
+  background: blue;
+  transition: 0.3s ease-in-out;
+
+  & img:hover {
+    opacity: 0.5;
+  }
+}
+
+
+
+//? ■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+//? テキストアニメーション設定
+
+//? ■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+// *=========================================
+// *中心から外に線が伸びる（下部）
+// *=========================================
+.text-animation1 {
+  position: relative;
+  padding-bottom: 10px;
+
+  &:hover {
+    color: #0481A2;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background: #0481A2;
+    transition: all .3s;
+    transform: scale(0, 1);
+    transform-origin: center top;
+  }
+
+  &:hover::after {
+    transform: scale(1, 1);
+  }
+}
+
+// *=========================================
+// *中心から外に線が伸びる（中央）
+// *=========================================
+.text-animation2 {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    width: 80%;
+    height: 1px;
+    background: #666;
+    transition: all .3s;
+    transform: scale(0, 1);
+    transform-origin: center top;
+
+  }
+
+  &:hover::after {
+    transform: scale(1, 1);
+  }
+}
+
+// *=========================================
+// *左から右に線が伸びる（下部）
+// *=========================================
+
+.text-animation3 {
+  position: relative;
+  padding-bottom: 10px;
+
+  &:hover {
+    color: #0481A2;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background: #0481A2;
+    transition: all .3s;
+    transform: scale(0, 1);
+    transform-origin: left top;
+  }
+
+
+  &:hover::after {
+    transform: scale(1, 1);
+  }
+}
+
+// *=========================================
+// *左から右に線が伸びる（上部）
+// *=========================================
+.text-animation4 {
+  position: relative;
+  padding-top: 10px;
+
+  &:hover {
+    color: #0481A2;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background: #0481A2;
+    transition: all .3s;
+    transform: scale(0, 1);
+    transform-origin: left top;
+  }
+
+  &:hover::after {
+    transform: scale(1, 1);
+  }
+}
+
+
+// *=========================================
+// *左から右に背景が伸びる
+// *=========================================
+.text-animation5 {
+  position: relative;
+
+
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #0481A2;
+    transition: all .5s;
+    opacity: 0;
+  }
+
+  &:hover::after {
+    width: 100%;
+    opacity: 1;
+  }
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+// *=========================================
+// *左から右に線が伸びて背景になる
+// *=========================================
+.text-animation6 {
+  position: relative;
+  transition: all .7s;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #0481A2;
+    opacity: 0;
+  }
+
+  &:hover::after {
+    width: 100%;
+    opacity: 1;
+    animation: bgappear 0.5s forwards;
+  }
+
+  @keyframes bgappear {
+    0% {
+      width: 0%;
+      height: 1px;
+    }
+
+    50% {
+      width: 100%;
+      height: 1px;
+    }
+
+    100% {
+      width: 100%;
+      height: 100%;
+      background: #0481A2;
+    }
+  }
+
+  &:hover {
+    color: #fff;
+    z-index: 1;
+  }
+}
+
+// *=========================================
+// *上下に線が伸びて背景になる
+// *=========================================
+.text-animation7 {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  transition: all .2s;
+
+  &:hover {
+    background: #0481A2;
+    color: #fff;
+  }
+
+  &:hover {
+    transition-delay: .5s;
+  }
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background: #0481A2;
+    transition: all .5s;
+  }
+
+  &::before {
+    top: 0;
+    transform: translateX(-100%);
+  }
+
+  &::after {
+    bottom: 0;
+    transform: translateX(100%);
+  }
+
+  &:hover::before,
+  &:hover::after {
+    transform: translateX(0);
+  }
+}
+
+// *=========================================
+// *円が線に変化
+// *=========================================
+
+.text-animation8 {
+  position: relative;
+  padding-bottom: 10px;
+
+  &:hover {
+    color: #0481A2;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    border-radius: 50%;
+    background: #0481A2;
+    transition: all .3s;
+    transform: scale(0.04, 1);
+    transform-origin: center bottom;
+  }
+
+  &:hover::after {
+    height: 2px;
+    border-radius: 0;
+    transform: scale(0.8, 1);
+  }
+}
+
+
+
+//ここから
+
+
+// *=========================================
+// *テキストが入れ替わる
+// *=========================================
+
+.text-animation9 {
+  position: relative;
+  overflow: hidden;
+  padding: 10px 60px;
+
+
+  & span {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transition: all .5s;
+    transform: translate(-50%, 0);
+    display: block;
+    opacity: 1;
+    white-space: nowrap;
+  }
+
+  & span:nth-child(2) {
+    opacity: 0;
+    transform: translate(-50%, 100%);
+  }
+
+  &:hover span:nth-child(1) {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+  }
+
+  &:hover span:nth-child(2) {
+    opacity: 1;
+    transform: translate(-50%, 0);
+
+  }
+}
+
+// *=========================================
+// *線が伸びて枠線になる
+// *=========================================
+.text-animation10 {
+  position: relative;
+  margin: 0 10px;
+  display: block;
+  width: 200px;
+  text-align: center;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    background: #0481A2;
+    width: 0;
+    height: 2px;
+    transition: all 0.2s linear;
+  }
+
+  &::before {
+    right: 0;
+    bottom: 0;
+  }
+
+  &::after {
+    left: 0;
+    top: 0;
+  }
+
+  & span {
+    display: block;
+  }
+
+  & span::before,
+  & span::after {
+    content: "";
+    position: absolute;
+    background: #0481A2;
+    width: 2px;
+    height: 0;
+    transition: all 0.1s linear;
+  }
+
+  & span::before {
+    left: 0;
+    bottom: 0;
+  }
+
+  & span::after {
+    right: 0;
+    top: 0;
+  }
+
+
+  &:hover::before,
+  &:hover::after {
+    width: 100%;
+  }
+
+  &:hover::after {
+    transition-delay: 0s;
+  }
+
+  &:hover::before {
+    transition-delay: 0.3s;
+  }
+
+  &.current span::before,
+  &.current span::after,
+  &:hover span::before,
+  &:hover span::after {
+    height: 100%;
+  }
+
+  &:hover span::before {
+    transition-delay: 0.5s;
+  }
+
+  &:hover span::after {
+    transition-delay: 0.2s;
+  }
+}
+
+// *=========================================
+// *左右から線が伸びて枠線になる
+// *=========================================
+.text-animation11 {
+  position: relative;
+  margin: 0 10px;
+  display: block;
+  width: 300px;
+  text-align: center;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #0481A2;
+    transition: all 0.2s linear;
+    transition-delay: 0.2s;
+  }
+
+  &::before {
+    right: 0;
+    top: 0;
+  }
+
+  &::after {
+    left: 0;
+    bottom: 0;
+  }
+
+
+  & span {
+    display: block;
+  }
+
+  & span::before,
+  & span::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 0;
+    background: #0481A2;
+    transition: all 0.2s linear;
+  }
+
+  & span::before {
+    left: 0;
+    top: 0;
+  }
+
+  & span::after {
+    right: 0;
+    bottom: 0;
+  }
+
+  &:hover::before,
+  &:hover::after {
+    width: 100%;
+  }
+
+  &:hover span::before,
+  &:hover span::after {
+    height: 100%;
+  }
+}

@@ -1,0 +1,286 @@
+//?  ■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+//?  layoutの設定
+
+//?  ■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+// *=========================================
+// *基本の設定
+// *=========================================
+body {
+    font-family: $ff-1;
+    color: $clr-f;
+    font-size: rem(16); //?基本文字サイズ
+    letter-spacing: ls(0);
+    line-height: lh(24, 16);
+
+    @include pc {
+        font-size: rem(16);
+        letter-spacing: ls(0);
+        line-height: lh(24, 16);
+    }
+}
+
+main {
+    display: block;
+    overflow: hidden;
+}
+
+section {
+    position: relative;
+}
+
+ul,
+ol {
+    list-style-type: none;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: bottom;
+    height: auto;
+}
+
+a {
+    color: $clr-f;
+
+    text-decoration: none;
+
+    &:hover {
+        opacity: 0.6;
+    }
+}
+
+// *=========================================
+// *innerの設定(メインコンテンツの幅・位置の設定)
+// *=========================================
+.inner {
+    padding: 0 37px;
+    max-width: 1920px;
+    margin: 0 auto;
+    align-items: center;
+    position: relative;
+
+    @include pc {
+        padding: 0 9%;
+        //    padding: 0 138px;
+    }
+}
+
+.inner2 {
+    padding: 0 37px;
+    max-width: 1920px;
+    margin: 0 auto;
+    align-items: center;
+    position: relative;
+
+    @include pc {
+        padding: 0 6%;
+        //    padding: 0 138px;
+    }
+}
+
+//背景を透過
+.inner-rgba {
+    padding: 0 37px;
+    margin: 0 auto;
+    align-items: center;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.8);
+
+    @include pc {
+        padding: 0% 138px;
+    }
+}
+
+.rgba {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+// *=========================================
+// *見出しの設定
+// *=========================================
+
+.h2 {
+    font-size: rem(40);
+    letter-spacing: ls(0);
+    line-height: lh(58, 40);
+    color: $clr-1;
+
+    @include pc {
+        font-size: rem(40);
+        letter-spacing: ls(0);
+        line-height: lh(58, 40);
+    }
+}
+
+.h3 {
+    font-size: rem(32);
+    letter-spacing: ls(0);
+    line-height: lh(46, 32);
+    color: $clr-1;
+
+    @include pc {
+        font-size: rem(32);
+        letter-spacing: ls(0);
+        line-height: lh(46, 32);
+    }
+}
+
+
+.h4 {
+    font-size: rem(24);
+    letter-spacing: ls(0);
+    line-height: lh(35, 24);
+    color: $clr-1;
+
+    @include pc {
+        font-size: rem(24);
+        letter-spacing: ls(0);
+        line-height: lh(35, 24);
+    }
+}
+
+.p {
+    font-size: rem(16);
+    letter-spacing: ls(0);
+    line-height: lh(24, 16);
+    color: $clr-1;
+
+    @include pc {
+        font-size: rem(16);
+        letter-spacing: ls(0);
+        line-height: lh(24, 16);
+    }
+}
+
+// *=========================================
+// *font-sizeの設定
+// *=========================================
+
+//remで設定する場合
+//=========================================
+//rem(16)=16px=1rem
+//ls(←AV→の値)
+//lh(行間の値,font-size)
+
+
+.fz-1 {
+    font-size: rem(40);
+    letter-spacing: ls(0);
+    line-height: lh(58, 40);
+
+    @include pc {
+        font-size: rem(40);
+        letter-spacing: ls(0);
+        line-height: lh(58, 40);
+    }
+}
+
+.fz-2 {
+    font-size: rem(32);
+    letter-spacing: ls(0);
+    line-height: lh(46, 32);
+
+    @include pc {
+        font-size: rem(32);
+        letter-spacing: ls(0);
+        line-height: lh(46, 32);
+    }
+}
+
+
+.fz-3 {
+    font-size: rem(24);
+    letter-spacing: ls(0);
+    line-height: lh(35, 24);
+
+    @include pc {
+        font-size: rem(24);
+        letter-spacing: ls(0);
+        line-height: lh(35, 24);
+    }
+}
+
+.fz-4 {
+    font-size: rem(16);
+    letter-spacing: ls(0);
+    line-height: lh(24, 16);
+
+    @include pc {
+        font-size: rem(16);
+        letter-spacing: ls(0);
+        line-height: lh(24, 16);
+    }
+}
+
+.fz-5 {
+    font-size: rem(12);
+    letter-spacing: ls(0);
+    line-height: lh(17, 12);
+
+    @include pc {
+        font-size: rem(12);
+        letter-spacing: ls(0);
+        line-height: lh(17, 12);
+    }
+}
+
+// .fz5 {
+//   @include fz(30, 0, 51);
+// }
+
+//clampで設定する場合
+//=========================================
+//clamp(最小サイズ,1366pxでのサイズ,最大サイズ)
+
+// .fz-1 {
+//   font-size: clamp(rem(16), vw(20), rem(60));
+//   letter-spacing: ls(100);
+//   line-height: lh(51, 32);
+// }
+
+// *=========================================
+// *margin-bottomの設定
+// *=========================================
+
+.mb-1 {
+    margin-bottom: vw(100);
+
+    @include pc {
+        margin-bottom: vw(100);
+    }
+}
+
+.mb-2 {
+    margin-bottom: vw(100);
+
+    @include pc {
+        margin-bottom: vw(100);
+    }
+}
+
+.mb-3 {
+    margin-bottom: vw(100);
+
+    @include pc {
+        margin-bottom: vw(100);
+    }
+}
+
+.mb-4 {
+    margin-bottom: vw(100);
+
+    @include pc {
+        margin-bottom: vw(100);
+    }
+}
+
+// *=========================================
+// *sectionの設定（ビューポート外を非読み込みにする、読み込み速度アップ）
+// *=========================================
+// section {
+//   content-visibility: auto;
+//   contain-intrinsic-size: 100px 1000px; //sectionのおおよその高さを設定
+//   position: relative;
+// }

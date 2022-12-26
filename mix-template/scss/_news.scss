@@ -1,0 +1,260 @@
+@charset "UTF-8";
+//?  ■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+//?  NEWSの設定（お知らせ投稿：single-newsとお知らせ一覧page-news-list）
+
+//?  ■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+
+
+// *=========================================
+// *homeの表示設定
+// *=========================================
+
+.news {
+
+    &__box {
+        //お知らせの箱
+        margin-top: 100px;
+        border: 1px solid #333;
+        padding: 1rem;
+
+        @include pc {
+            padding: 5rem;
+        }
+    }
+
+    &__list {
+        //お知らせの上下間隔
+        margin-bottom: 2rem;
+    }
+
+    &__date {
+        //日付
+        font-size: rem(16);
+        //2桁の日付で幅が変わるので統一
+        width: 140px;
+    }
+
+    &__title {
+        //タイトル
+        font-size: rem(18);
+        font-weight: 400;
+    }
+
+    &__link {
+        position: relative;
+
+        &::before {
+            //>マーク
+            content: "";
+            margin: auto;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 20px;
+            width: 10px;
+            height: 10px;
+            border-top: 1px solid #333;
+            border-right: 1px solid #333;
+            transform: rotate(45deg);
+        }
+
+        &:hover {
+
+            color: $clr-a;
+            transition: .2s ease-in-out;
+        }
+
+    }
+
+
+
+
+}
+
+
+// *=========================================
+// *single-newsの表示設定
+// *=========================================
+
+.news-blog {
+    margin: 100px auto 10px auto;
+
+
+    @include pc {
+        margin: 100px auto 10px auto;
+    }
+
+    &__box {
+        background-color: #fff;
+        box-shadow: 0px 0px 30px rgba(82, 211, 176, 0.16);
+        padding: 50px 50px;
+    }
+
+    &__img {
+        text-align: center;
+    }
+
+
+    &__title {
+        font-family: $ff-2;
+        font-size: rem(30);
+        font-weight: normal;
+        text-align: left;
+    }
+
+    &__date {
+        text-align: left;
+        font-family: $ff-2;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #000;
+        margin-bottom: 30px;
+    }
+
+
+
+    &__contents {
+        text-align: left;
+        margin-bottom: 50px;
+        line-height: 2rem;
+        padding-bottom: 0;
+
+        @include pc {
+            margin-bottom: 200px;
+            padding-bottom: 50px;
+        }
+    }
+
+}
+
+//pre or next
+.news-link {
+
+
+
+    &__pre {
+        background-color: #fff;
+        border-radius: 50px;
+
+        a {
+            position: relative;
+            display: block;
+            padding: 0.5rem 3rem;
+
+            &::before {
+                //>マーク
+                content: "";
+                margin: auto;
+                position: absolute;
+                top: 0px;
+                bottom: 0;
+                left: 20px;
+                width: 10px;
+                height: 10px;
+                border-top: 1px solid #333;
+                border-right: 1px solid #333;
+                transform: rotate(225deg);
+            }
+        }
+
+    }
+
+
+    &__next {
+        background-color: #fff;
+        border-radius: 50px;
+
+        a {
+            position: relative;
+            display: block;
+            padding: 0.5rem 3rem;
+
+            &::after {
+                //>マーク
+                content: "";
+                margin: auto;
+                position: absolute;
+                top: 0px;
+                bottom: 0;
+                right: 20px;
+                width: 10px;
+                height: 10px;
+                border-top: 1px solid #333;
+                border-right: 1px solid #333;
+                transform: rotate(45deg);
+            }
+        }
+    }
+
+}
+
+
+
+// *=========================================
+// *news-listの表示設定
+// *=========================================
+
+.news-list {
+
+    &__box {
+        //お知らせの箱
+        margin-top: 100px;
+        background-color: #fff;
+        box-shadow: 0px 0px 30px rgba(82, 211, 176, 0.16);
+        padding: 50px 50px;
+        margin-bottom: 100px;
+
+        @include pc {
+            padding: 5rem;
+        }
+    }
+
+    &__list {
+        //お知らせの上下間隔
+        margin-bottom: 2rem;
+    }
+
+    &__date {
+        //日付
+        font-size: rem(16);
+        //2桁の日付で幅が変わるので統一
+        width: 140px;
+    }
+
+    &__title {
+        //タイトル
+        font-size: rem(18);
+        font-weight: 400;
+    }
+
+    &__link {
+        position: relative;
+
+        &::before {
+            //>マーク
+            content: "";
+            margin: auto;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 20px;
+            width: 10px;
+            height: 10px;
+            border-top: 1px solid #333;
+            border-right: 1px solid #333;
+            transform: rotate(45deg);
+        }
+
+        &:hover {
+
+            color: $clr-a;
+            transition: .2s ease-in-out;
+        }
+
+    }
+
+
+
+
+}

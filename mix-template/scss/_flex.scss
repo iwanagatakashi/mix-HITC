@@ -1,0 +1,279 @@
+@charset "UTF-8";
+//? ■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+//? flex設定
+
+//? ■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+// *=========================================
+// *flexの設定(親要素)
+// *=========================================
+
+.flex-simple {
+  display: flex;
+}
+
+// *全サイズで横並びのクラス
+// ----------------------------------------------------------
+.flex {
+  display: flex;
+  align-items: center;
+
+  &-start {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-start {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+  }
+
+  &-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-start {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  }
+
+  &-around {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    &-start {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  }
+
+  &-end {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    &-start {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+  }
+}
+
+// *PC版のみ横並びのクラス
+// ----------------------------------------------------------
+.flex-pc {
+  display: flex;
+  flex-direction: column;
+
+  @include pc {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &-start {
+    display: flex;
+    flex-direction: column;
+
+    @include pc {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+
+  &-center {
+    display: flex;
+    flex-direction: column;
+
+    @include pc {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &-start {
+      display: flex;
+      flex-direction: column;
+
+      @include pc {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+      }
+    }
+  }
+
+  &-between {
+    display: flex;
+    flex-direction: column;
+
+    @include pc {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &-start {
+      display: flex;
+      flex-direction: column;
+
+      @include pc {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+    }
+  }
+
+  &-around {
+    display: flex;
+    flex-direction: column;
+
+    @include pc {
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    &-start {
+      display: flex;
+      flex-direction: column;
+
+      @include pc {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start;
+      }
+    }
+  }
+
+  &-end {
+    display: flex;
+    flex-direction: column;
+
+    @include pc {
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    &-start {
+      display: flex;
+      flex-direction: column;
+
+      @include pc {
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: flex-start;
+      }
+    }
+  }
+}
+
+// *SP版のみ横並びのクラス
+// ----------------------------------------------------------
+.flex-sp {
+  display: flex;
+  align-items: center;
+
+  @include pc {
+    flex-direction: column;
+  }
+}
+
+// *=========================================
+// *flexの設定(子要素)
+// *=========================================
+
+@for $i from 10 through 100 {
+  .flex-w#{$i} {
+    flex: 0 1 #{$i * 1%};
+  }
+}
+
+// *=========================================
+// *gapの設定
+// *=========================================
+@for $i from 1 through 100 {
+  .gap#{$i} {
+    gap: #{$i}px;
+  }
+}
+
+// *=========================================
+// *flex-gridの設定
+// *=========================================
+
+// .flex-grid {
+//   display: flex;
+//   flex-wrap: wrap;
+
+//   @include pc {
+//     flex-wrap: nowrap;
+//   }
+
+//   & div:nth-child(n + 1) {
+//     margin-right: 10px;
+//     margin-bottom: 10px;
+
+//     @include pc {
+//       margin-right: 16px;
+//       margin-bottom: 16px;
+//     }
+//   }
+
+//   & div:nth-child(even) {
+//     margin-right: 0;
+
+//     @include pc {
+//       margin-right: 16px;
+//     }
+//   }
+
+//   & div:last-child {
+//     margin-right: 0px !important;
+//   }
+// }
+
+// @for $i from 1 through 11 {
+//   .flex-col#{$i}-sin {
+//     flex: 0 1 100%;
+//     margin-right: 0 !important;
+
+//     @include pc {
+//       flex: 0 1 calc(calc(calc(100% - 176px) / 12) * #{$i} + calc(calc(#{$i} - 1) * 16px));
+//       margin-right: 16px !important;
+//     }
+//   }
+// }
+
+// @for $i from 1 through 11 {
+//   .flex-col#{$i}-dow {
+//     flex: 0 1 calc(calc(100% - 10px) / 2);
+
+//     @include pc {
+//       flex: 0 1 calc(calc(calc(100% - 176px) / 12) * #{$i} + calc(calc(#{$i} - 1) * 16px));
+//     }
+//   }
+// }
+
+// @for $i from 1 through 11 {
+//   .flex-ml#{$i} {
+//     @include pc {
+//       margin-left: calc(calc(calc(100% - 176px) / 12) * #{$i} + calc(#{$i} * 16px));
+//     }
+//   }
+// }

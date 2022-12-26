@@ -1,0 +1,297 @@
+@charset "UTF-8";
+// ?■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+// ?ヘッダーの設定
+
+// ?■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+
+// *=========================================
+// *hero用
+// *=========================================
+.hero {
+  position: relative;
+  z-index: 0;
+
+  //テキストゾーン
+  &__list {
+    @include center; //上下左右中央配置
+    z-index: 1;
+  }
+
+  &__item1 {
+    font-size: rem(36);
+    font-weight: bold;
+
+    @include pc {
+      font-size: rem(40);
+    }
+  }
+
+  &__item2 {
+    font-size: rem(20);
+
+    @include pc {
+      font-size: rem(30);
+    }
+  }
+
+  &__item3 {
+    font-size: rem(16);
+  }
+}
+
+//ブラウザ1ビューサイズに自動調整（JS）
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+//下層用
+.hero2 {
+  position: relative;
+  z-index: 0;
+}
+
+.hero-img2 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+// *=========================================
+// *headerの設定
+// *=========================================
+
+
+.header {
+  display: flex;
+  background: #00aaa7; //ヘッダーの背景色
+  width: 100%;
+
+  &__title {
+    flex: 1 1 20%;
+    text-align: center;
+  }
+
+  //ヘッダーの位置固定
+  &.fixed {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+  }
+
+}
+
+
+
+
+
+
+// *=========================================
+// *gnaviの設定
+// *=========================================
+.gnavi {
+  background: #00aaa7; //?ナビの背景色
+  color: #fff;
+  text-align: center;
+  line-height: 1;
+  flex: 1 1 80%;
+
+  @include sp {
+    padding: 0;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+
+    @include sp {
+      display: block;
+      margin-top: 50px;
+    }
+  }
+
+  &__item {
+    @include sp {
+      border-bottom: 1px solid #ccc; //?SPメニュー下線の色
+    }
+  }
+
+  &__link {
+    display: block;
+    text-decoration: none;
+    color: #fff; //?ナビ文字の色
+    padding: 20px 35px;
+    transition: all .3s;
+
+    &:hover {
+      color: #fff; //?ホバー時の色
+    }
+
+    @include sp {}
+  }
+}
+
+// *=========================================
+// *sp用gnaviの設定
+// *=========================================
+
+//spサイズの時発動
+@include sp {
+  #g-nav {
+    position: fixed;
+    z-index: 999;
+    //ナビのスタート位置と形状
+    top: -120%;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    //ナビの高さ
+    transition: all 0.6s;
+
+  }
+
+  //アクティブクラスがついたら位置を0に
+  #g-nav.panelactive {
+    top: 0;
+  }
+
+  //ナビゲーションの縦スクロール
+  #g-nav.panelactive #g-nav-list {
+    //ナビの数が増えた場合縦スクロール
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    height: 100vh;
+    //表示する高さ
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+
+  //========= ボタンのためのCSS ===============
+  .openbtn {
+    position: fixed;
+    z-index: 9999;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+
+
+    //* ×に変化
+    & span {
+      display: inline-block;
+      transition: all .4s;
+      position: absolute;
+      left: 14px;
+      height: 3px;
+      border-radius: 2px;
+      background-color: #666; //?ハンバーガーボタンの色
+      width: 45%;
+
+      &:nth-of-type(1) {
+        top: 15px;
+      }
+
+      &:nth-of-type(2) {
+        top: 23px;
+      }
+
+      &:nth-of-type(3) {
+        top: 31px;
+      }
+    }
+
+    &.active span {
+      &:nth-of-type(1) {
+        top: 18px;
+        left: 18px;
+        transform: translateY(6px) rotate(-45deg);
+        width: 30%;
+      }
+
+      &:nth-of-type(2) {
+        opacity: 0;
+      }
+
+      &:nth-of-type(3) {
+        top: 30px;
+        left: 18px;
+        transform: translateY(-6px) rotate(45deg);
+        width: 30%;
+      }
+    }
+  }
+}
+
+// *=========================================
+// *currentの設定
+// *=========================================
+// .current {
+//   border-bottom: 3px solid #0481A2; //?現在地の色
+// }
+
+.current {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 5px; //?線の上下位置
+    display: inline-block;
+    width: 80px; //?線の長さ
+    height: 3px; //?線の太さ
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%); //?位置調整
+    background-color: red; //?線の色
+    border-radius: 2px; //?線の丸み
+  }
+}
+
+
+//?  ■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+//?  フッターの設定
+
+//?  ■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+// *=========================================
+// * footerの設定
+// *=========================================
+.footer {
+  text-align: center;
+  background-color: #00aaa7; //footerの背景色
+
+  &__small {
+    //著作権表記の設定
+    font-size: rem(14);
+    color: #fff; //コピーライトの文字色
+  }
+}
+
+// *=========================================
+// * sitemapの設定
+// *=========================================
+.sitemap {
+  &__list {
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 30px;
+    padding-bottom: 50px;
+  }
+
+  &__item {
+    padding: 0 1rem;
+  }
+
+  &__link {
+    color: #fff; //?サイトマップの文字色
+  }
+}

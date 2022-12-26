@@ -1,0 +1,297 @@
+@charset "UTF-8";
+
+//?  ■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+//?  mixin基本設定
+
+//設定箇所（ color ・ font）
+
+//?  ■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+// *=========================================
+// !color
+// *=========================================
+$clr-f: #333; //メイン文字色の設定
+$clr-w: #fff; //メイン文字白色の設定
+$clr-a: #00aaa7; //ボタン・リンクの色
+$clr-1: #00aaa7; //見出しの色に使ってる
+$clr-2: #333;
+$clr-3: #333;
+$clr-4: #333;
+$clr-5: #333;
+$clr-6: #333;
+
+// *=========================================
+// !font
+// *=========================================
+$ff-1: 'Noto Sans JP',
+sans-serif; //ベースのフォント
+$ff-2: 'Inconsolata',
+monospace; //フォント1
+$ff-3: 'Inconsolata',
+monospace; //フォント2
+
+
+// *=========================================
+// *メディアクエリ（ブレークポイント）
+// *~767px：タブレットサイズ(基本的にはここで分岐させる)
+// *768px~992px pcサイズ
+// *992px~1280px pcサイズ(中)
+// *1280px~ pcサイズ(大)
+// *=========================================
+
+// *sp限定 768px以下
+// ----------------------------------------------------------
+$sp: 768px;
+
+@mixin sp {
+
+  @media print,
+  screen and (max-width: ($sp)) {
+    @content;
+  }
+}
+
+// *769px以上
+// ----------------------------------------------------------
+$pc: 769px;
+
+@mixin pc {
+
+  @media print,
+  screen and (min-width: ($pc)) {
+    @content;
+  }
+}
+
+// *992px以上
+// ----------------------------------------------------------
+$pc2: 992px;
+
+@mixin pc2 {
+
+  @media print,
+  screen and (min-width: ($pc2)) {
+    @content;
+  }
+}
+
+// *1200px以上
+// ----------------------------------------------------------
+$pc3: 1200px;
+
+@mixin pc3 {
+
+  @media print,
+  screen and (min-width: ($pc3)) {
+    @content;
+  }
+}
+
+// *1400px以上
+// ----------------------------------------------------------
+$pc4: 1400px;
+
+@mixin pc4 {
+
+  @media print,
+  screen and (min-width: ($pc4)) {
+    @content;
+  }
+}
+
+// *=========================================
+// *XD用簡単記述
+// *=========================================
+
+// *font-size pxをremに変換
+// ----------------------------------------------------------
+@function rem($size) {
+  $rem: ($size / 16) + rem;
+  @return $rem;
+}
+
+// *vw(20) 全体幅1366pxの時、値が(20)pxになるようvw計算
+// ----------------------------------------------------------
+$pcDesignSize: 1366;
+$spDesignSize: 375;
+
+@function vw($size) {
+  $vw: $size * (100 / $pcDesignSize) + vw;
+  @return $vw;
+}
+
+@function svw($size) {
+  $svw: $size * (100 / $spDesignSize) + vw;
+  @return $svw;
+}
+
+// *XD用（←AV→の値）letter-spacing調整
+// ----------------------------------------------------------
+
+@function ls($size) {
+  $ls: ($size / 1000) + em;
+  @return $ls;
+}
+
+// h5 {
+//   letter-spacing: ls(100);
+// }
+
+// *XD用line-height調整
+// ----------------------------------------------------------
+@function lh($size, $rem) {
+  $lh: ($size / $rem);
+  @return $lh;
+}
+
+
+// *clampを使ったfont-size　 clamp( 半分,1366pxのときのpx,1.5倍)
+// ----------------------------------------------------------
+
+// @function fontSize($minFont) {
+//   $minWidth: 375;
+//   $maxWidth: 1000;
+//   $minFontSize: rem($minFont / 2);
+//   $fontVw: vw($minFont);
+//   $maxFontSize: rem($minFont * 1.5);
+//   @return clamp(#{$minFontSize}, #{$fontVw}, #{$maxFontSize});
+// }
+
+// h5 {
+//   font-size: fontSize(40);
+// }
+
+
+
+// @function fontSize($minFont) {
+//   $minWidth: 375;
+//   $maxWidth: 1000;
+//   $minFontSize: $minFont*1px;
+//   $fontVw: round($minFont/$minWidth*100*1000)/1000;
+//   $maxFontSize: round($maxWidth*($fontVw /100))*1px;
+//   @return clamp(#{$minFontSize}, #{$fontVw}vw, #{$maxFontSize});
+// }
+
+// h5 {
+//   font-size: fontSize(20);
+// }
+
+
+//?  ■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+//?  mixin
+
+//?  ■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+
+// *font-sizeまとめて（フォントサイズ,文字間,行間）
+// ----------------------------------------------------------
+@mixin fz($rem, $ls, $lh) {
+  font-size: rem($rem);
+  letter-spacing: ls($ls);
+  line-height: lh($lh, $rem);
+}
+
+
+// *IEにだけかけるcss
+// ----------------------------------------------------------
+// @mixin ie {
+//   @media all and (-ms-high-contrast: none) {
+//     @content;
+//   }
+// }
+
+// *Firefoxにだけかけるcss
+// ----------------------------------------------------------
+@mixin fox {
+  @-moz-document url-prefix() {
+    @content;
+  }
+}
+
+// *Chromeにだけかけるcss
+// ----------------------------------------------------------
+@mixin chrome {
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    @content;
+  }
+}
+
+// *safariにだけかけるcss
+// ----------------------------------------------------------
+// @mixin safari($className) {
+
+//   _::-webkit-full-page-media,
+//   _:future,
+//   :root $className {
+//     @content;
+//   }
+// }
+
+// *float解除
+// ----------------------------------------------------------
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+// *上下左右中央配置
+// ----------------------------------------------------------
+@mixin center {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// *上下中央配置
+// ----------------------------------------------------------
+@mixin center-y {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translateY(-50%);
+}
+
+// *左右中央配置
+// ----------------------------------------------------------
+@mixin center-x {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+// *垂直中央配置
+// ----------------------------------------------------------
+@mixin vertical-centered {
+  min-height: 6.5em;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+// *長文テキストを枠内に収める
+// ----------------------------------------------------------
+@mixin truncate($width: 100%) {
+  width: $width;
+  max-width: 100%;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// *position:absolute全方向一括設定
+// ----------------------------------------------------------
+@mixin abs($top: auto, $right: auto, $bottom: auto, $left: auto) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}

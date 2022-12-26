@@ -1,0 +1,1918 @@
+@charset "UTF-8";
+//?  ■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+//?  ボタン装飾シリーズ（.btn1～9）
+
+//?  ■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+// *=========================================
+// *btn（共通設定）
+// *=========================================
+.btn {
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    display: inline-block;
+    border: 1px solid #555;
+    padding: 10px 30px;
+    text-align: center;
+    outline: none;
+    transition: ease .2s;
+}
+
+.btn span {
+    position: relative;
+    z-index: 3;
+    color: #333;
+}
+
+.btn:hover span {
+    color: #fff;
+}
+
+
+
+
+
+// *背景が流れる（左から右）
+// ----------------------------------------------------------
+.bgleft:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: #333;
+    width: 100%;
+    height: 100%;
+    transition: transform .6s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+    transform: scale(0, 1);
+    transform-origin: right top;
+}
+
+.bgleft:hover:before {
+    transform-origin: left top;
+    transform: scale(1, 1);
+}
+
+
+// *背景が流れる（右から左）
+// ----------------------------------------------------------
+.bgright:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: #333;
+    width: 100%;
+    height: 100%;
+    transition: transform .6s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+    transform: scale(0, 1);
+    transform-origin: left top;
+}
+
+.bgright:hover:before {
+    transform-origin: right top;
+    transform: scale(1, 1);
+}
+
+// *背景が流れる（上から下）
+// ----------------------------------------------------------
+.bgtop:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: #333;
+    width: 100%;
+    height: 0;
+    transition: .3s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+}
+
+.bgtop:hover:before {
+    height: 100%;
+    background-color: #333;
+}
+
+
+// *背景が流れる（下から上）
+// ----------------------------------------------------------
+.bgbottom:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    background: #333;
+    width: 100%;
+    height: 0;
+    transition: .3s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+}
+
+.bgbottom:hover:before {
+    height: 100%;
+    background-color: #333;
+}
+
+
+// *背景が流れる（中央から横全体）
+// ----------------------------------------------------------
+.bgcenterx:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: #333;
+    width: 100%;
+    height: 100%;
+    transition: transform .3s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+    transform: scale(0, 1);
+    transform-origin: top;
+}
+
+.bgcenterx:hover:before {
+    transform: scale(1, 1);
+}
+
+
+// *背景が流れる（中央から外）
+// ----------------------------------------------------------
+.bgcenterout:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: #333;
+    width: 100%;
+    height: 100%;
+    transition: transform .3s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+    transform: scale(0, 0);
+    transform-origin: center;
+}
+
+.bgcenterout:hover:before {
+    transform: scale(1, 1);
+}
+
+
+// *背景が流れる（中央から縦全体）
+// ----------------------------------------------------------
+.bgcentery:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: #333;
+    width: 100%;
+    height: 100%;
+    transition: transform .3s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+    transform: scale(1, 0);
+    transform-origin: center;
+}
+
+.bgcentery:hover:before {
+    transform: scale(1, 1);
+}
+
+
+// * 背景が流れる（斜め）
+// ----------------------------------------------------------
+.bgskew::before {
+    content: '';
+    /*絶対配置で位置を指定*/
+    position: absolute;
+    top: 0;
+    left: -130%;
+    /*色や形状*/
+    background: #333;
+    width: 120%;
+    height: 100%;
+    transform: skewX(-25deg);
+}
+
+/*hoverした時のアニメーション*/
+.bgskew:hover::before {
+    animation: skewanime .5s forwards;
+    /*アニメーションの名前と速度を定義*/
+}
+
+@keyframes skewanime {
+    100% {
+        left: -10%;
+        /*画面の見えていない左から右へ移動する終了地点*/
+    }
+}
+
+// *=========================================
+// *btn02（共通設定）
+// *=========================================
+
+.btn02 {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 250px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    outline: none;
+
+    & span {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: 1px solid #333;
+        transform-style: preserve-3d;
+        transition: 0.5s;
+    }
+}
+
+// *くるっと回転（手前に）
+// ----------------------------------------------------------
+.rotatefront span:nth-child(1) {
+    background: #fff;
+    color: #000;
+    transform: rotateX(0deg);
+    transform-origin: 0 50% -25px;
+}
+
+.rotatefront:hover span:nth-child(1) {
+    transform: rotateX(-90deg);
+}
+
+.rotatefront span:nth-child(2) {
+    background: #000;
+    color: #fff;
+    transform: rotateX(90deg);
+    transform-origin: 0 50% -25px;
+}
+
+.rotatefront:hover span:nth-child(2) {
+    transform: rotateX(0deg);
+}
+
+
+// *くるっと回転（奥に）
+// ----------------------------------------------------------
+
+.rotateback {
+
+    & span:nth-child(1) {
+        background: #fff;
+        color: #000;
+        transform: rotateX(0deg);
+        transform-origin: 0 50% -25px;
+    }
+
+    &:hover span:nth-child(1) {
+        transform: rotateX(90deg);
+    }
+
+    & span:nth-child(2) {
+        background: #000;
+        color: #fff;
+        transform: rotateX(-90deg);
+        transform-origin: 0 50% -25px;
+    }
+
+    &:hover span:nth-child(2) {
+        transform: rotateX(0deg);
+    }
+}
+
+// *=========================================
+// *クリックしたら波紋が広がる 
+// *=========================================
+.btnripple {
+    position: relative;
+    /*はみ出す波紋を隠す*/
+    overflow: hidden;
+    /*ボタンの形状*/
+    text-decoration: none;
+    display: inline-block;
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    outline: none;
+
+    &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: radial-gradient(circle, #fff 10%, transparent 10%) no-repeat 50%;
+        transform: scale(10, 10);
+        opacity: 0;
+        transition: transform 0.3s, opacity 1s;
+    }
+
+    &:active::after {
+        transform: scale(0, 0);
+        transition: 0s;
+        opacity: 0.3;
+    }
+}
+
+// *=========================================
+// *無限に波紋が広がる
+// *=========================================
+
+.btnripple2 {
+    position: relative;
+    display: inline-block;
+    background: #333;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    color: #ccc;
+    outline: none;
+    transition: all .3s;
+
+    &:hover {
+        background: #666;
+    }
+
+    &::after,
+    &::before {
+        content: '';
+        position: absolute;
+        left: -25%;
+        top: -25%;
+        border: 1px solid #333;
+        width: 150%;
+        height: 150%;
+        border-radius: 50%;
+        opacity: 1;
+        animation: 1s circleanime linear infinite;
+    }
+
+    &::before {
+        animation-delay: .5s;
+    }
+
+    & span::after {
+        content: '';
+        position: absolute;
+        top: 38%;
+        left: 45%;
+        border: 14px solid transparent;
+        border-top-width: 10px;
+        border-bottom-width: 10px;
+        border-left-color: #fff;
+    }
+
+}
+
+
+
+@keyframes circleanime {
+    0% {
+        transform: scale(0.68);
+    }
+
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
+
+
+// *=========================================
+// *波紋がふわっと広がる
+// *=========================================
+.btnripple3 {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    color: #333;
+    outline: none;
+
+    &:hover::before {
+        content: '';
+        position: absolute;
+        left: 30%;
+        top: 0;
+        border: 1px solid #333;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        opacity: 1;
+        animation: 1s circleanime2 forwards;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 30%;
+        right: -20px;
+        width: 5px;
+        height: 5px;
+        border-top: 1px solid #000;
+        border-right: 1px solid #000;
+        transform: rotate(45deg);
+    }
+
+
+}
+
+
+
+@keyframes circleanime2 {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+
+
+
+
+// *=========================================
+// *押し込む円
+// *=========================================
+.pushcircle {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    text-align: center;
+    background: #333;
+    border-radius: 50%;
+    color: #fff;
+    text-decoration: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 85%;
+        height: 85%;
+        border: 2px solid #333;
+        border-radius: 50%;
+        transform: translate(-50%, -50%) scale(1.1);
+        transition: .3s ease;
+    }
+
+    &:hover:after {
+        transform: translate(-50%, -50%) scale(1);
+        border-color: #fff;
+    }
+
+
+}
+
+
+
+// *=========================================
+// *btn03（共通設定）
+// *=========================================
+
+.btn03 {
+    position: relative;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    background: transparent;
+    border-radius: 25px;
+    border: solid 1px #333;
+    outline: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+        border-color: transparent;
+    }
+
+    & span {
+        position: relative;
+        z-index: 2;
+        display: block;
+        padding: 10px 30px;
+        background: #fff;
+        border-radius: 25px;
+        color: #333;
+        transition: all 0.3s ease;
+    }
+
+}
+
+
+
+
+
+
+// *下に押し込まれる（立体が平面に）
+// ----------------------------------------------------------
+
+.pushdown {
+    &:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 4px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 25px;
+        background-color: #333;
+    }
+
+    &:hover span {
+        background-color: #333;
+        color: #fff;
+        transform: translateY(4px);
+    }
+}
+
+
+// *右下に押し込まれる（立体が平面に）
+// ----------------------------------------------------------
+.pushright {
+
+    &:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 4px;
+        left: 4px;
+
+        width: 100%;
+        height: 100%;
+        border-radius: 25px;
+        background-color: #333;
+    }
+
+    &:hover span {
+        background-color: #333;
+        color: #fff;
+        transform: translate(4px, 4px);
+    }
+}
+
+// *左下に押し込まれる（立体が平面に）
+// ----------------------------------------------------------
+.pushleft {
+
+
+    &:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 4px;
+        right: 4px;
+        width: 100%;
+        height: 100%;
+        border-radius: 25px;
+        background-color: #333;
+
+    }
+
+    &:hover span {
+        background-color: #333;
+        color: #fff;
+        transform: translate(-4px, 4px);
+    }
+}
+
+
+
+// *=========================================
+// *影がついて浮き上がる
+// *=========================================
+
+// *影がついて浮き上がる
+// ----------------------------------------------------------
+.float1 {
+    border: 1px solid #ccc;
+    color: #333;
+    padding: 10px 20px;
+    display: inline-block;
+    text-decoration: none;
+    outline: none;
+    transition: all .3s;
+
+    &:hover {
+        box-shadow: 0 7px 10px rgba(0, 0, 0, 0.3);
+        border-color: transparent;
+    }
+
+}
+
+// *影が拡がって浮き上がる
+// ----------------------------------------------------------
+.float2 {
+    background: #fff;
+    border: 1px solid #ccc;
+    color: #333;
+    padding: 10px 20px;
+    display: inline-block;
+    text-decoration: none;
+    outline: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), 0 0 40px rgba(128, 128, 128, 0.1);
+    transition: all .3s;
+
+    &:hover {
+        box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4), 0 0 50px rgba(128, 128, 128, 0.1);
+        border-color: transparent;
+    }
+
+}
+
+
+// *上に移動し影がついて浮き上がる
+// ----------------------------------------------------------
+.float3 {
+    position: relative;
+    top: 0;
+    padding: 10px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    color: #333;
+    text-decoration: none;
+    outline: none;
+    transition: all .3s;
+
+    &:hover {
+        top: -3px;
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+    }
+
+}
+
+
+// *=========================================
+// *btn4（共通設定）
+// *=========================================
+
+
+.btn04 {
+    position: relative;
+    display: inline-block;
+    padding: 10px 30px;
+    color: #333;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    outline: none;
+    overflow: hidden;
+
+
+    &:hover {
+        color: #ccc;
+        border-color: transparent;
+        transition-delay: .6s;
+    }
+
+
+    & span {
+        display: block;
+        z-index: 2;
+    }
+}
+
+
+
+// *線から塗に変化（上から下）
+// ----------------------------------------------------------
+
+
+.bordertop {
+
+    & span::before,
+    & span::after {
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: 0;
+        background: #333;
+        transition: all .3s;
+    }
+
+
+    & span::before {
+        left: 0;
+        top: 0;
+    }
+
+    & span::after {
+        right: 0;
+        top: 0;
+    }
+
+
+    &:hover span::before,
+    &:hover span::after {
+        height: 100%;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+        width: 100%;
+        height: 0;
+        background: #333;
+        transition: all .3s;
+    }
+
+    &:hover::before {
+        height: 100%;
+        transition-delay: .4s;
+    }
+
+}
+
+
+// *線から塗に変化（下から上）
+// ----------------------------------------------------------
+
+
+
+.borderbottom span::before,
+.borderbottom span::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 0;
+    background: #333;
+    transition: all .3s;
+}
+
+.borderbottom span::before {
+    left: 0;
+    bottom: 0;
+}
+
+.borderbottom span::after {
+    right: 0;
+    bottom: 0;
+}
+
+.borderbottom:hover span::before,
+.borderbottom:hover span::after {
+    height: 100%;
+}
+
+.borderbottom::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    width: 100%;
+    height: 0;
+    background: #333;
+    transition: all .3s;
+}
+
+.borderbottom:hover::before {
+    height: 100%;
+    transition-delay: .4s;
+}
+
+// *線から塗に変化（左から右）
+// ----------------------------------------------------------
+.borderleft span::before,
+.borderleft span::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    background: #333;
+    transition: all .3s;
+}
+
+.borderleft span::before {
+    left: 0;
+    top: 0;
+}
+
+.borderleft span::after {
+    left: 0;
+    bottom: 0;
+}
+
+.borderleft:hover span::before,
+.borderleft:hover span::after {
+    width: 100%;
+}
+
+.borderleft::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    height: 100%;
+    width: 0;
+    background: #333;
+    transition: all .3s;
+}
+
+.borderleft:hover::before {
+    width: 100%;
+    transition-delay: .4s;
+}
+
+// * 線から塗に変化（右から左）
+// ----------------------------------------------------------
+.borderright span::before,
+.borderright span::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    background: #333;
+    transition: all .3s;
+}
+
+.borderright span::before {
+    right: 0;
+    top: 0;
+}
+
+.borderright span::after {
+    right: 0;
+    bottom: 0;
+}
+
+.borderright:hover span::before,
+.borderright:hover span::after {
+    width: 100%;
+}
+
+.borderright::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    height: 100%;
+    width: 0;
+    background: #333;
+    transition: all .3s;
+}
+
+.borderright:hover::before {
+    width: 100%;
+    transition-delay: .4s;
+}
+
+// *線から塗に変化（中央から外）
+// ----------------------------------------------------------
+.bordercenter span::before,
+.bordercenter span::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: #333;
+    transition: all .3s;
+    transform: scale(0, 1);
+    transform-origin: center;
+}
+
+
+.bordercenter span::before {
+    left: 0;
+    top: 0;
+}
+
+
+.bordercenter span::after {
+    left: 0;
+    bottom: 0;
+}
+
+.bordercenter:hover span::before,
+.bordercenter:hover span::after {
+    transform: scale(1, 1);
+}
+
+
+.bordercenter::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    background: #333;
+    transition: all .3s;
+    transform: scale(0, 1);
+    transform-origin: center;
+}
+
+.bordercenter:hover::before {
+    width: 100%;
+    transition-delay: .4s;
+    transform: scale(1, 1);
+}
+
+
+
+// *=========================================
+// *btn5（共通設定）
+// *=========================================
+.btn05 {
+    position: relative;
+    display: inline-block;
+    color: #333;
+    padding: 10px 20px;
+    background: #eee;
+    text-decoration: none;
+    outline: none;
+    transition: all .3s;
+    transition-delay: .7s;
+
+
+
+    &:hover {
+        background: #333;
+        color: #fff;
+    }
+
+    & span {
+        display: block;
+    }
+
+    &5::before,
+    &::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 1px;
+        background: #333;
+        transition: all 0.2s linear;
+    }
+
+    & span::before,
+    & span::after {
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 0;
+        background: #333;
+        transition: all 0.2s linear;
+    }
+
+
+    &:hover::before,
+    &:hover::after {
+        width: 100%;
+    }
+
+    &:hover span::before,
+    &:hover span::after {
+        height: 100%;
+    }
+
+}
+
+
+
+// *左上と右下から枠線が伸びて塗に
+// ----------------------------------------------------------
+
+
+.bordercircle1 {
+
+    &::before {
+        right: 0;
+        top: 0;
+        transition-delay: 0.2s;
+    }
+
+    &::after {
+        left: 0;
+        bottom: 0;
+        transition-delay: 0.2s;
+    }
+
+    & span::before {
+        left: 0;
+        top: 0;
+    }
+
+    & span::after {
+        right: 0;
+        bottom: 0;
+    }
+
+}
+
+
+// *左下⇒右下⇒右上⇒左上⇒左下に枠線が伸びて塗りに
+// ----------------------------------------------------------
+
+.bordercircle2 {
+
+    &::after {
+        left: 0;
+        bottom: 0;
+    }
+
+    & span::after {
+        right: 0;
+        bottom: 0;
+        transition-delay: 0.2s;
+    }
+
+    &::before {
+        right: 0;
+        top: 0;
+        transition-delay: 0.4s;
+    }
+
+    & span::before {
+        left: 0;
+        top: 0;
+        transition-delay: 0.6s;
+    }
+
+}
+
+
+// *左上と右下から枠線が伸びて塗りに
+// ----------------------------------------------------------
+.bordercircle3 {
+
+    &::after {
+        right: 0;
+        bottom: 0;
+        transition-duration: 0.4s;
+    }
+
+    & span::after {
+        right: 0;
+        bottom: 0;
+        transition-duration: 0.4s;
+    }
+
+    &::before {
+        left: 0;
+        top: 0;
+        transition-duration: 0.4s;
+    }
+
+    & span::before {
+        left: 0;
+        top: 0;
+        transition-duration: 0.4s;
+    }
+
+}
+
+
+// *=========================================
+// * グラデーションが流れる
+// *=========================================
+.gradient1 {
+    display: inline-block;
+    color: #fff;
+    padding: 18px 60px;
+    border-radius: 30px;
+    text-decoration: none;
+    outline: none;
+    background: linear-gradient(270deg, #3bade3 0%, #576fe6 25%, #9844b7 51%, #ff357f 100%);
+    background-position: 1% 50%;
+    background-size: 200% auto;
+    transition: all 0.3s ease-out;
+
+    &:hover {
+        color: #fff;
+        background-position: 99% 50%;
+    }
+
+}
+
+
+// *=========================================
+// * グラデーションが縮小する
+// *=========================================
+.gradient2 {
+    display: inline-block;
+    color: #fff;
+    padding: 18px 60px;
+    border-radius: 30px;
+    text-decoration: none;
+    outline: none;
+    background: linear-gradient(to right, #52A0FD 0%, #00e2fa 80%, #00e2fa 100%);
+    box-shadow: 0 15px 15px rgba(82, 160, 253, 0.4);
+    transition: all 0.3s ease-out;
+
+    &:hover {
+        transform: scale(0.95);
+    }
+}
+
+
+
+// *=========================================
+// * グラデーションが拡大する 
+// *=========================================
+.gradient3 {
+    display: inline-block;
+    color: #fff;
+    padding: 18px 60px;
+    border-radius: 30px;
+    text-decoration: none;
+    outline: none;
+    background: linear-gradient(to right, #44ea76 0%, #39fad7 80%, #39fad7 100%);
+    transition: all 0.3s ease-out;
+
+    &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 15px 15px rgba(57, 250, 215, 0.4);
+    }
+}
+
+
+
+// *=========================================
+// * グラデーション線から塗に変化する  
+// *=========================================
+.gradient4 {
+    display: inline-block;
+    padding: 18px 60px;
+    border-radius: 30px;
+    text-decoration: none;
+    border: 1px solid #fa6c9f;
+    color: #fa6c9f;
+    outline: none;
+    transition: all 0.4s ease-out;
+
+    &:hover {
+        border-color: transparent;
+        color: #fff;
+        background: linear-gradient(270deg, #fa6c9f 0%, #ffe140 50%, #ff357f 100%);
+        background-size: 200% auto;
+        background-position: right center;
+        box-shadow: 0 5px 10px rgba(250, 108, 159, 0.4);
+    }
+}
+
+
+
+// *=========================================
+// * 外の線が伸びる
+// *=========================================
+.btnlinestretches {
+    position: relative;
+    color: #333;
+    border: 1px solid #333;
+    padding: 10px 30px;
+    display: inline-block;
+    text-decoration: none;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        background: #333;
+        color: #fff;
+        border-color: transparent;
+    }
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        border: solid #333;
+        width: 10px;
+        height: 10px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &::before {
+        top: -6px;
+        left: -6px;
+        border-width: 1px 0 0 1px;
+    }
+
+    &::after {
+        bottom: -6px;
+        right: -6px;
+        border-width: 0 1px 1px 0;
+    }
+
+    &:hover::before,
+    &:hover::after {
+        width: calc(100% + 11px);
+        height: calc(100% + 11px);
+        border-color: #666;
+    }
+
+}
+
+
+// *=========================================
+// * 少し出ていた線が伸びる
+// *=========================================
+.btnlinestretches2 {
+    position: relative;
+    color: #333;
+    padding: 10px 30px;
+    display: inline-block;
+    text-decoration: none;
+    outline: none;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        border: solid #333;
+        width: 10px;
+        height: 10px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &::before {
+        top: 0;
+        left: 0;
+        border-width: 2px 0 0 2px;
+    }
+
+    &::after {
+        bottom: 0;
+        right: 0;
+        border-width: 0 2px 2px 0;
+    }
+
+    &:hover::before,
+    &:hover::after {
+        width: calc(100% - 2px);
+        height: calc(100% - 2px);
+        border-color: #666
+    }
+
+}
+
+
+// *=========================================
+// * 下線が伸びて背景に変わる
+// *=========================================
+.btnlinestretches3 {
+    position: relative;
+    color: #333;
+    padding: 10px 30px;
+    display: inline-block;
+    text-decoration: none;
+    outline: none;
+
+    & span {
+        position: relative;
+        z-index: 2;
+    }
+
+    &:hover span {
+        color: #fff;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        left: 0;
+        background: #333;
+        width: 100%;
+        height: 3px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &:hover::after {
+        height: 100%;
+    }
+
+}
+
+
+
+// *=========================================
+// * 線の上を別の線が伸びる
+// *=========================================
+.btnlinestretches4 {
+    position: relative;
+    color: #333;
+    padding: 10px 50px 10px 30px;
+    display: inline-block;
+    text-decoration: none;
+    outline: none;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        left: 0;
+        background: #333;
+        width: 100%;
+        height: 2px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &::after {
+        width: 0;
+        background: #ccc;
+    }
+
+    &:hover::after {
+        width: 100%;
+    }
+
+    & span::after {
+        content: '';
+        position: absolute;
+        top: 1.3em;
+        right: 20px;
+        width: 5px;
+        height: 5px;
+        border-top: 1px solid #000;
+        border-right: 1px solid #000;
+        transform: rotate(45deg);
+        transition: all .3s;
+    }
+
+    &:hover span::after {
+        right: 15px;
+    }
+
+
+}
+
+// *=========================================
+// * 矢印の線がループして伸縮
+// *=========================================
+.btnlinestretches5 {
+    position: relative;
+    color: #333;
+    padding: 10px 0;
+    display: inline-block;
+    text-decoration: none;
+    outline: none;
+
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background: #333;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        width: 8px;
+        height: 8px;
+        border-top: 1px solid #333;
+        border-right: 1px solid #333;
+        transform: rotate(45deg);
+    }
+
+    &::before {
+        animation: arrowlong01 2s ease infinite;
+    }
+
+    &::after {
+        animation: arrowlong02 2s ease infinite;
+    }
+}
+
+@keyframes arrowlong01 {
+    0% {
+        width: 0;
+        opacity: 0
+    }
+
+    20% {
+        width: 0;
+        opacity: 1
+    }
+
+    80% {
+        width: 105%;
+        opacity: 1
+    }
+
+    100% {
+        width: 105%;
+        opacity: 0
+    }
+}
+
+@keyframes arrowlong02 {
+    0% {
+        left: 0;
+        opacity: 0
+    }
+
+    20% {
+        left: 0;
+        opacity: 1
+    }
+
+    80% {
+        left: 103%;
+        opacity: 1
+    }
+
+    100% {
+        left: 103%;
+        opacity: 0
+    }
+}
+
+
+
+// *=========================================
+// * 塗りから線に変わる
+// *=========================================
+.btnchangeline {
+    position: relative;
+    color: #333;
+    padding: 10px 30px;
+    display: inline-block;
+    text-decoration: none;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        border-top: 1px solid #666;
+        border-bottom: 1px solid #666;
+        opacity: 0;
+        transform: scale(0, 1);
+        transition: all 0.3s;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        background-color: #333;
+        transition: all 0.3s;
+    }
+
+    &:hover::before {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+
+    &:hover::after {
+        opacity: 0;
+        transform: scale(0, 1);
+    }
+
+    & span {
+        position: relative;
+        z-index: 2;
+        color: #fff;
+        transition: all 0.3s;
+    }
+
+    &:hover span {
+        letter-spacing: 2px;
+        color: #333;
+    }
+}
+
+
+// *=========================================
+// * 角丸に変わる
+// *=========================================
+.btnchangeradius {
+    display: inline-block;
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: 5px double white;
+    text-decoration: none;
+    outline: none;
+    transition: .3s ease-out;
+
+    &:hover {
+        background: #666;
+        border-radius: 20px;
+    }
+}
+
+// *=========================================
+// * きらっと光る
+// *=========================================
+.btnshine {
+    position: relative;
+    display: inline-block;
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    outline: none;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -75%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .3) 100%);
+        transform: skewX(-25deg);
+    }
+
+    &:hover::before {
+        animation: shine 0.7s;
+    }
+}
+
+@keyframes shine {
+    100% {
+        left: 125%;
+    }
+}
+
+
+
+// *=========================================
+// * リンクテキストが入る
+// *=========================================
+.btntransform {
+    position: relative;
+    display: inline-block;
+    padding: 0 0 0 15px;
+    line-height: 50px;
+    color: #333;
+    text-decoration: none;
+    outline: none;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        z-index: -1;
+        width: 50px;
+        height: 50px;
+        background: #ccc;
+        border-radius: 25px;
+        transition: .3s ease-out;
+    }
+
+    &:hover::before {
+        width: 212px;
+    }
+
+    &::after {
+        position: absolute;
+        content: '';
+        top: 1.3em;
+        right: -15px;
+        width: 5px;
+        height: 5px;
+        border-top: 1px solid #000;
+        border-right: 1px solid #000;
+        transform: rotate(45deg);
+    }
+}
+
+// *=========================================
+// * 表示するテキストが切り替わる
+// *=========================================
+.btntextchange {
+    position: relative;
+    border: 1px solid #555;
+    border-radius: 25px;
+    min-width: 210px;
+    padding: 20px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    color: #333;
+    outline: none;
+    transition: all .2s;
+
+    &:hover {
+        background: #333;
+        color: #fff;
+    }
+
+    & span {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        transition: all .5s;
+        display: block;
+        white-space: nowrap;
+    }
+
+    & span:nth-child(2) {
+        opacity: 0;
+    }
+
+    &:hover span:nth-child(1) {
+        opacity: 0;
+    }
+
+    &:hover span:nth-child(2) {
+        opacity: 1;
+    }
+}
+
+// *=========================================
+// * btn06
+// *=========================================
+
+.btn06 {
+    position: relative;
+    display: inline-block;
+    background: #00aaa7;
+    border: 1px solid #00aaa7;
+    color: #fff;
+    padding: 10px 40px 12px 30px;
+    border-radius: 25px;
+    text-align: center;
+    outline: none;
+    transition: ease .2s;
+    vertical-align: center;
+
+    &:hover {
+        background: #fff;
+        color: #00aaa7;
+        border: 1px solid #00aaa7;
+    }
+}
+
+
+
+
+
+
+// *矢印が右に移動
+// ----------------------------------------------------------
+.btnarrow1 {
+    &::after {
+        content: '';
+        position: absolute;
+        top: 42%;
+        right: 13px;
+        width: 5px;
+        height: 5px;
+        border-top: 2px solid #fff;
+        border-right: 2px solid #fff;
+        transform: rotate(45deg);
+        transition: all .3s;
+
+    }
+
+    &:hover::after {
+        border-top: 2px solid #00aaa7;
+        border-right: 2px solid #00aaa7;
+        right: 11px;
+    }
+}
+
+// *矢印が右に移動して現在地に戻る
+// ----------------------------------------------------------
+.btnarrow2 {
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 42%;
+        right: 13px;
+        width: 5px;
+        height: 5px;
+        border-top: 2px solid #fff;
+        border-right: 2px solid #fff;
+        transform: rotate(45deg);
+    }
+
+    &:hover::after {
+        animation: arrow .5s;
+    }
+}
+
+
+@keyframes arrow {
+    50% {
+        right: 10px;
+    }
+
+    100% {
+        right: 13px;
+    }
+}
+
+
+// *矢印が回転
+// ----------------------------------------------------------
+.btnarrow3 {
+    &::after {
+        content: '';
+        position: absolute;
+        top: 42%;
+        right: 13px;
+        width: 5px;
+        height: 5px;
+        border-top: 2px solid #fff;
+        border-right: 2px solid #fff;
+        transform: rotate(45deg);
+        transition: all .3s;
+    }
+
+    &:hover::after {
+        animation: arrowrotate .3s;
+    }
+}
+
+@keyframes arrowrotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+// *=========================================
+// * 矢印が右に移動する
+// *=========================================
+.btnarrow4 {
+    position: relative;
+    display: inline-block;
+    padding: 0 20px;
+    color: #333;
+    text-decoration: none;
+    outline: none;
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 15%;
+        width: 85%;
+        height: 1px;
+        background: #333;
+        transition: all .3s;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        right: 0;
+        width: 15px;
+        height: 1px;
+        background: #333;
+        transform: rotate(35deg);
+        transition: all .3s;
+    }
+
+    &:hover::before {
+        left: 20%;
+    }
+
+    &:hover::after {
+        right: -5%;
+    }
+}
+
+// *=========================================
+// * 矢印が右に移動して背景がつく
+// *=========================================
+.btnarrow5 {
+    position: relative;
+    border: 1px solid #555;
+    padding: 8px 30px;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    outline: none;
+    transition: all .2s linear;
+
+    &:hover {
+        background: #333;
+        color: #fff;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: -26px;
+        width: 40px;
+        height: 1px;
+        background: #333;
+        transition: all .2s linear;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 20%;
+        right: -21px;
+        width: 1px;
+        height: 12px;
+        background: #333;
+        transform: skewX(45deg);
+        transition: all .2s linear;
+    }
+
+    &:hover::before {
+        right: -30px;
+    }
+
+    &:hover::after {
+        right: -25px;
+    }
+}
+
+// *=========================================
+// * 矢印が縮む
+// *=========================================
+.btnarrow6 {
+    position: relative;
+    background: #333;
+    padding: 5px 60px 5px 30px;
+    display: inline-block;
+    text-align: center;
+    transition: all .2s linear;
+    color: #fff;
+    text-decoration: none;
+    border: transparent 2px solid;
+    outline: none;
+
+
+    &:hover {
+        background: #fff;
+        color: #333;
+        border-color: #333;
+    }
+
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        width: 20px;
+        height: 1px;
+        background: #fff;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 40%;
+        right: 12px;
+        border: 4px solid transparent;
+        border-top-width: 4px;
+        border-bottom-width: 4px;
+        border-left-color: #fff;
+        transition: all .2s linear;
+    }
+
+    &:hover::before {
+        background: #333;
+        right: 25px;
+    }
+
+    &:hover::after {
+        border-left-color: #333;
+        right: 20px;
+    }
+
+}

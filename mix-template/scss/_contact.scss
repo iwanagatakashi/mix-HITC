@@ -1,0 +1,361 @@
+@charset "UTF-8";
+//?  ■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+//?  CONTACTページ設定
+
+//?  ■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■━■
+
+
+// *=========================================
+// *.contact
+// *=========================================
+.contact {
+    margin-top: 200px;
+
+    @include sp {
+        margin-top: 100px;
+    }
+
+    &__title {
+        font-size: rem(50);
+        font-family: $ff-2;
+        font-weight: normal;
+
+        @include sp {
+            font-size: rem(30);
+            margin-bottom: 30px;
+        }
+    }
+
+    &__span {
+        color: #9D0A0A;
+        font-weight: bold;
+    }
+}
+
+.contact small {
+    @include sp {
+        font-size: 16px;
+    }
+}
+
+// *=========================================
+// *form
+// *=========================================
+form {
+    margin-top: 120px;
+    width: 90%;
+    margin: 80px auto;
+
+    @include sp {
+        margin: 50px auto;
+        width: 100%;
+    }
+
+    dt {
+        display: inline-block;
+        text-align: left;
+        margin-right: 50px;
+        width: 150px;
+
+        @include sp {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
+
+
+    dd {
+        width: calc(100% - 150px);
+
+        @include sp {
+            width: 100%;
+            font-size: rem(20);
+        }
+    }
+}
+
+.form {
+    &__item {
+        margin-bottom: 65px;
+
+        @include sp {
+            margin-bottom: 20px;
+        }
+    }
+
+    &__check {
+        justify-content: flex-start;
+        width: 100%;
+
+        @include sp {
+            flex-direction: column;
+            align-items: start;
+            text-align: left;
+            margin-top: 10px;
+        }
+    }
+
+    &__input {
+        margin-right: 0;
+        background-color: #E6E6E6;
+        padding: 10px 10px;
+        border-radius: 10px;
+        text-align: left;
+    }
+
+    &__subtitle {
+        font-size: rem(20);
+        font-weight: bold;
+        margin-bottom: 24px;
+
+        @include sp {
+            padding-top: 30px;
+        }
+    }
+
+}
+
+input[type=text] {
+    width: 100%;
+}
+
+dl {
+    display: flex;
+
+    @include sp {
+        flex-direction: column;
+    }
+}
+
+.wpcf7-list-item {
+    margin-left: 3rem;
+}
+
+
+textarea {
+    width: 100%;
+    height: 10rem;
+}
+
+// *=========================================
+// *.privacy
+// *=========================================
+.privacy {
+    margin-top: 50px;
+    width: 100%;
+    height: 200px;
+    overflow-y: scroll;
+    text-align: left;
+    background-color: #F4F4F4;
+    font-size: rem(14);
+    padding: 10px;
+    margin-bottom: 50px;
+
+    &__title {
+        font-size: rem(19);
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    &__smalltitle {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    &__subtitle {
+        padding: 15px 0 1px 0;
+    }
+
+    &__item {
+        list-style-type: disc;
+        margin-left: 1rem;
+    }
+}
+
+.agree {
+    display: block;
+    width: 100%;
+    background: #DFEFF2;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+
+
+//送信ボタン
+.wpcf7 .wpcf7-submit {
+    display: inline-block;
+    font-size: rem(26);
+    font-weight: bold;
+    background-color: $clr-a;
+    border-radius: 100px;
+    padding: 16px 55px;
+    color: #fff;
+    transition: all .3s;
+    opacity: 1;
+    text-align: center;
+
+    &:hover {
+        background-color: #00B9EF;
+    }
+}
+
+
+.wpcf7 .wpcf7-submit:disabled {
+    opacity: 0.5;
+    cursor: default;
+
+    &:hover {
+        background-color: $clr-a;
+    }
+}
+
+.wpcf7-spinner {
+    display: none;
+}
+
+.form__subtext {
+    text-align: left;
+}
+
+.radio {
+    text-align: left;
+    margin-left: 1rem;
+}
+
+.wpcf7-list-item-label {
+    margin-right: 1.5rem;
+}
+
+// *=========================================
+// *.is-inactive送信ボタンのチェック前の色
+// *=========================================
+.is-inactive {
+    background-color: #E6E6E6;
+    // border: 1px solid #E6E6E6;
+
+    &:hover {
+        color: #fff;
+        background-color: #E6E6E6;
+        // border: 1px solid #E6E6E6;
+    }
+}
+
+// *=========================================
+// *チェックボックス
+// *=========================================
+
+.form__check {
+
+    //既存のチェックボックスを見えなくする
+    input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+    }
+
+    .wpcf7-form-control.wpcf7-checkbox {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    span.wpcf7-list-item {
+        position: relative;
+        //項目ごとの余白を調整
+        margin: 0 50px 0 0 !important;
+    }
+
+
+    .wpcf7-list-item-label {
+        //項目の文字色や文字サイズ
+        color: #333;
+        cursor: pointer;
+        font-size: fz(16);
+
+
+        &:before {
+            content: '';
+            //チェックボックスの枠線の色
+            border: 1px solid #333;
+            border-radius: 5px;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            position: relative;
+            top: -3px;
+            margin-right: 16px;
+            vertical-align: middle;
+            cursor: pointer;
+            text-align: center;
+        }
+    }
+
+    input[type="checkbox"]:checked+.wpcf7-list-item-label:after {
+        content: "";
+        position: absolute;
+        display: block;
+        top: 0px;
+        left: 6px;
+        width: 10px;
+        height: 18px;
+        //チェック線の色
+        border-bottom: 4px solid blue;
+        border-right: 4px solid blue;
+        transform: rotate(45deg);
+    }
+}
+
+// *=========================================
+// *個人情報の取扱同意ボタン
+// *=========================================
+
+
+.agree {
+
+    input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+    }
+
+    .wpcf7-list-item {
+        position: relative;
+        //項目の文字色や文字サイズ
+        color: #333;
+        cursor: pointer;
+        font-size: fz(16);
+        margin: 0 0px 0 0 !important;
+
+        &:before {
+            content: '';
+            //チェックボックスの枠線の色
+            border: 1px solid #333;
+            border-radius: 5px;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            position: relative;
+            top: -3px;
+            margin-right: 16px;
+            vertical-align: middle;
+            cursor: pointer;
+            text-align: center;
+        }
+
+
+        input[type="checkbox"]:checked+.wpcf7-list-item-label:after {
+            content: "";
+            position: absolute;
+            display: block;
+            top: 0px;
+            left: 6px;
+            width: 10px;
+            height: 18px;
+            //チェック線の色
+            border-bottom: 4px solid red;
+            border-right: 4px solid red;
+            transform: rotate(45deg);
+        }
+
+
+    }
+}
