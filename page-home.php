@@ -10,8 +10,6 @@
 <!--ヒーローテキスト(hero__boxに重ねて表示)-->
 <div class="hero__list">
     <p class="hero__item1 move move-text">タイトル文字タイトル文字タイトル文字タイトル文字</p>
-    <p class="hero__item2 move move-bottom">サンプル②</p>
-    <p class="hero__item3 move move-text">サンプル③</p>
 </div>
 <!-- hero画像のみver -->
 <div class="hero"><img class="hero-img" src="<?php echo esc_url( get_theme_file_uri( 'img/hero1.jpg' ) ); ?>" alt=""></div>
