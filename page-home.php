@@ -23,7 +23,7 @@
 
 <main class="main">
 
-    更新テスト3
+    更新テスト4
 
     <section id="news" class="news">
         <!-- お知らせサムネ画像無し -->
