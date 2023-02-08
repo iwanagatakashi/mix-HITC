@@ -28,7 +28,7 @@
     <section id="news" class="news">
         <!-- お知らせサムネ画像無し -->
         <div class="inner">
-          test3
+          test4
             <?php
              $args = [
              'post_type' => 'news', // カスタム投稿名が「news」の場合
